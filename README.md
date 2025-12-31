@@ -226,7 +226,14 @@ Prices include VAT.
 
 As mentioned above, we did this whole project with no budget from congress orga, so we spent about 700 EUR from our own pockets to build the first five units. We would love to build a lot more than five units next year.
 
-We plan on offering a more direct option for donating to help offset our costs, but until then if you want to donate financially, please do so to Attraktor e.V., who very generously let us use their massive 150W laser cutter for hours of laser time. Donation info can be found here: https://blog.attraktor.org/spenden/ (Bonus: They are recognized as "gemeinnützig" and as such donations to them can be offset from your taxes if you reside within Germany / EU.)
+You can donate to us through these links:
+
+* https://bunq.me/aveao
+* https://paypal.me/aveaoz
+
+Please use transfer reference "Aircycles Donation" or "Aircycles Spende". The first link also has an IBAN for direct bank transfers.
+
+We don't intend to make a profit, so if we happen to get too many donations we'll temporarily remove the link.
 
 ## Contact
 

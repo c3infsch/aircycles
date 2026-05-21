@@ -166,6 +166,7 @@ The openscad source files are at the root:
 * `case.scad`: Outputs the laser cut box (on render) and the 3D printed corner pieces ("triangle_only" in the parameters)
 * `fan-shroud.scad`: For 3D printing
 * `power-mount-cylinder.scad`: For 3D printing
+* `handle.scad`: For 3D printing
 
 And these three optional parts:
 
@@ -183,13 +184,17 @@ A complete unit is made of these parts:
 * 4x corner-?mm-nofeet.stl
 * 5x fan-shroud.stl (or fan-cover.stl)
 * 1x power-mount-cylinder.stl or power-mount-flat.stl
+* 1x handle.stl
+
+And optionally these parts:
+* 4x foot.stl
 
 ### Steps
 
 * Buy wood
 * Laser cut box out of wood
 * Optionally postprocess wood (sanding, coating)
-* 3D print corners, shrouds, power mount
+* 3D print corners, shrouds, power mount and the handle
     * The files are already in the preferred print orientation
     * 0.25mm layer height is fine
     * PETG preferred
@@ -206,6 +211,7 @@ A complete unit is made of these parts:
 * Install one half of the corners (4)
 * Put in the filters
 * Then install the last 4 corners
+* Install the handle
 
 ### Costs
 

@@ -75,36 +75,40 @@ module draw_cylinder_around_fan() {
     }
 }
 
-fan_gap = (side_length - (fan_count * fan_dia)) / fan_count;
-
-intersection() {
-    // cutting off sides
-    translate([overall_depth/-2, (shroud_upper_dia+extra_border)/-2, 0]) cube([overall_depth, shroud_upper_dia + (extra_border*2), material_thickness + shroud_height]);
-
-    // shroud
-    union() {
-    // cylinder around fan
-    draw_cylinder_around_fan();
+module draw_fan_shroud() {
+    fan_gap = (side_length - (fan_count * fan_dia)) / fan_count;
 
     intersection() {
-        offset_shroud_overall_by = overall_depth % (shroud_thickness+shroud_gap);
-        cylinder(h=shroud_height, d1=fan_dia+material_thickness, d2=shroud_upper_dia+material_thickness);
-        for (shroud_offset = [offset_shroud_overall_by:shroud_thickness+shroud_gap:overall_depth]) {
-            translate([overall_depth/-2 +shroud_offset, (fan_dia + fan_gap - in_between_gap)/-2, 0]) rotate([0, shroud_angle, 0]) cube([shroud_thickness, fan_dia + fan_gap - in_between_gap, shroud_height + 5]);
+        // cutting off sides
+        translate([overall_depth/-2, (shroud_upper_dia+extra_border)/-2, 0]) cube([overall_depth, shroud_upper_dia + (extra_border*2), material_thickness + shroud_height]);
+
+        // shroud
+        union() {
+        // cylinder around fan
+        draw_cylinder_around_fan();
+
+        intersection() {
+            offset_shroud_overall_by = overall_depth % (shroud_thickness+shroud_gap);
+            cylinder(h=shroud_height, d1=fan_dia+material_thickness, d2=shroud_upper_dia+material_thickness);
+            for (shroud_offset = [offset_shroud_overall_by:shroud_thickness+shroud_gap:overall_depth]) {
+                translate([overall_depth/-2 +shroud_offset, (fan_dia + fan_gap - in_between_gap)/-2, 0]) rotate([0, shroud_angle, 0]) cube([shroud_thickness, fan_dia + fan_gap - in_between_gap, shroud_height + 5]);
+            }
+        }
+        // middle circle for fan logo
+        cylinder(h=material_thickness, d=center_circle_dia);
+        // finger protection
+        for (finger_protection_dia = [center_circle_dia:finger_protection_thickness+finger_protection_gap:fan_dia]) {
+            draw_circle_outlines(dia=finger_protection_dia, height=material_thickness, thickness=finger_protection_thickness);
+        }
+        // finger protection strengthening
+        intersection() {
+            translate([shroud_upper_dia/-2, finger_protection_thickness/-2, 0]) cube([shroud_upper_dia, finger_protection_thickness, material_thickness]);
+            cylinder(h=shroud_height, d1=fan_dia, d2=shroud_upper_dia);
+        }
+        // bottom part
+        draw_fan_holes();
         }
     }
-    // middle circle for fan logo
-    cylinder(h=material_thickness, d=center_circle_dia);
-    // finger protection
-    for (finger_protection_dia = [center_circle_dia:finger_protection_thickness+finger_protection_gap:fan_dia]) {
-        draw_circle_outlines(dia=finger_protection_dia, height=material_thickness, thickness=finger_protection_thickness);
-    }
-    // finger protection strengthening
-    intersection() {
-        translate([shroud_upper_dia/-2, finger_protection_thickness/-2, 0]) cube([shroud_upper_dia, finger_protection_thickness, material_thickness]);
-        cylinder(h=shroud_height, d1=fan_dia, d2=shroud_upper_dia);
-    }
-    // bottom part
-    draw_fan_holes();
-    }
 }
+
+draw_fan_shroud();

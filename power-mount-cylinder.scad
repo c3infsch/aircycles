@@ -2,7 +2,7 @@ $fn = 128;
 material_thickness = 2;
 screw_hole_dia = 4;
 
-module draw_power_mount() {
+module draw_power_mount_cylinder() {
     power_height = 60-material_thickness;
     power_width = 17;
     power_screw_distance = 50;
@@ -32,4 +32,4 @@ module draw_power_mount() {
     }
 }
 
-draw_power_mount();
+draw_power_mount_cylinder();
